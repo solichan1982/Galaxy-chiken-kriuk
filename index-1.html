@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Chicken Criuk - Astronot Chicken - Franchise Ayam Goreng Luar Angkasa</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS untuk Swiper.js (Slider) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- CSS untuk Fancybox (Lightbox/Fullscreen) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
+    <!-- CSS untuk Leaflet.js (Peta Interaktif) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Custom CSS for custom styles and animations */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f8fafc; /* Slate 50 */
+        }
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-10px);
+        }
+        .reveal {
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Styling untuk Tombol Navigasi Swiper Galeri */
+        .gallery-slider .swiper-button-next, .gallery-slider .swiper-button-prev {
+            color: #fb923c; /* Orange-400 */
+            background-color: rgba(15, 23, 42, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .gallery-slider .swiper-button-next:hover, .gallery-slider .swiper-button-prev:hover {
+            background-color: #fb923c;
+            color: #ffffff;
+        }
+        .gallery-slider .swiper-button-next::after, .gallery-slider .swiper-button-prev::after {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .swiper-pagination-bullet-active {
+            background: #fb923c !important;
+        }
+        /* Styling untuk Peta */
+        #map {
+            height: 500px;
+            border-radius: 1rem;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="scroll-smooth">
+
+    <!-- Header -->
+    <header class="bg-slate-900/50 backdrop-blur-sm fixed w-full z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3 text-2xl font-bold text-white">
+                <img src="adobe.png" alt="Logo Galaxy Chicken Criuk" class="w-12 h-12">
+                <span class="text-white">Galaxy <span class="text-orange-400">Chicken</span></span>
+            </a>
+            <div class="hidden md:flex space-x-8 text-lg">
+                <a href="#home" class="text-gray-300 hover:text-orange-400 transition">Home</a>
+                <a href="#paket" class="text-gray-300 hover:text-orange-400 transition">Paket</a>
+                <a href="#galeri" class="text-gray-300 hover:text-orange-400 transition">Galeri</a>
+                <a href="#peta" class="text-gray-300 hover:text-orange-400 transition">Lokasi</a>
+                <a href="proposal.html" target="_blank" class="text-gray-300 hover:text-orange-400 transition">Proposal</a>
+            </div>
+            <a href="https://wa.me/6289663363038?text=Halo,%20saya%20tertarik%20dengan%20franchise%20Galaxy%20Chicken%20Criuk." target="_blank" class="hidden md:block bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-full transition">Hubungi Kami</a>
+        </nav>
+    </header>
+
+    <!-- ... (Bagian Hero, About, Paket tetap sama) ... -->
+    <section id="home" class="hero-section h-screen flex items-center justify-center text-center">
+        <div class="bg-black bg-opacity-60 p-10 rounded-lg">
+            <h1 class="text-5xl md:text-7xl font-black text-white uppercase reveal">Rasa <span class="text-orange-400">Renyah</span> dari Luar Angkasa</h1>
+            <p class="text-lg md:text-xl text-gray-200 mt-4 max-w-2xl mx-auto reveal">Jadilah bagian dari revolusi kuliner dengan Galaxy Chicken Criuk. Konsep unik, rasa bintang lima, dan potensi keuntungan kosmik menanti Anda!</p>
+            <div class="mt-8 reveal"><a href="#paket" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition transform hover:scale-105">Lihat Paket Kemitraan</a></div>
+        </div>
+    </section>
+    <section id="about" class="py-20 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16"><h2 class="text-4xl font-bold text-white reveal">Kenapa <span class="text-orange-400">Galaxy Chicken Criuk</span>?</h2><p class="text-gray-400 mt-2 reveal">Kami bukan sekedar ayam goreng biasa. Kami adalah sebuah pengalaman.</p></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="reveal"><img src="https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=2073&auto=format&fit=crop" alt="Ayam Goreng Renyah Galaxy Chicken Criuk" class="rounded-2xl shadow-2xl w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"></div>
+                <div class="space-y-8">
+                     <div class="flex items-start reveal"><div class="text-4xl text-orange-400 mr-6 pt-1"><i class="fas fa-rocket"></i></div><div><h3 class="text-2xl font-bold mb-1">Konsep Unik & Futuristik</h3><p class="text-gray-400">Dengan tema luar angkasa, kami menarik semua kalangan, dari anak-anak hingga dewasa, memberikan pengalaman makan yang tak terlupakan.</p></div></div>
+                    <div class="flex items-start reveal"><div class="text-4xl text-orange-400 mr-6 pt-1"><i class="fas fa-pepper-hot"></i></div><div><h3 class="text-2xl font-bold mb-1">Resep Rahasia Galaksi</h3><p class="text-gray-400">Bumbu rahasia kami diracik sempurna, menghasilkan ayam yang 'criuk' di luar, namun juicy dan penuh rasa di dalam.</p></div></div>
+                     <div class="flex items-start reveal"><div class="text-4xl text-orange-400 mr-6 pt-1"><i class="fas fa-handshake-angle"></i></div><div><h3 class="text-2xl font-bold mb-1">Dukungan Penuh 360°</h3><p class="text-gray-400">Tim kami siap mendukung Anda dari pemilihan lokasi, pelatihan, hingga strategi marketing untuk memastikan kesuksesan outlet Anda.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="paket" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16"><h2 class="text-4xl font-bold text-white uppercase reveal">Pilih Misi <span class="text-orange-400">Anda</span></h2><p class="text-gray-400 mt-2 reveal">Tiga paket kemitraan dirancang untuk setiap level investor, dari pemula hingga komandan.</p></div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card rounded-2xl p-8 flex flex-col reveal"><h3 class="text-2xl font-bold text-orange-400">Paket Stasiun Luar Angkasa</h3><p class="text-4xl font-black my-4">Rp 15 Juta</p><p class="text-gray-400 mb-6">Paket hemat untuk memulai perjalanan bisnis kuliner Anda. Cocok untuk konsep booth minimalis.</p><ul class="space-y-3 text-lg flex-grow"><li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Booth Portabel Eksklusif</li><li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Peralatan Masak Dasar</li><li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Bahan Baku Awal 100 Porsi</li></ul><a href="https://wa.me/6289663363038?text=Halo,%20saya%20tertarik%20dengan%20Paket%20Stasiun%20Luar%20Angkasa." target="_blank" class="mt-8 w-full text-center bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full transition">Pilih Misi Ini</a></div>
+                <div class="glass-card rounded-2xl p-8 flex flex-col border-2 border-orange-500 transform scale-105 shadow-2xl shadow-orange-500/20 reveal"><span class="bg-orange-500 text-white text-sm font-bold px-3 py-1 rounded-full absolute -top-4 right-4">PALING POPULER</span><h3 class="text-2xl font-bold text-orange-400">Paket Penjelajah Galaksi</h3><p class="text-4xl font-black my-4">Rp 25 Juta</p><p class="text-gray-400 mb-6">Paket terlengkap untuk jangkauan pasar yang lebih luas. Ideal untuk lokasi strategis di ruko atau teras.</p><ul class="space-y-3 text-lg flex-grow"><li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Gerobak Premium Modern</li><li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Peralatan Masak Lengkap</li><li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Bahan Baku Awal 250 Porsi</li></ul><a href="https://wa.me/6289663363038?text=Halo,%20saya%20tertarik%20dengan%20Paket%20Penjelajah%20Galaksi." target="_blank" class="mt-8 w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full transition">Pilih Misi Ini</a></div>
+                <div class="glass-card rounded-2xl p-8 flex flex-col reveal"><h3 class="text-2xl font-bold text-orange-400">Paket Komandan Kosmik</h3><p class="text-4xl font-black my-4">Rp 50 Juta</p><p class="text-gray-400 mb-6">Paket supremasi untuk dominasi pasar. Konsep mini-resto dengan fasilitas dan dukungan super lengkap.</p><ul class="space-y-3 text-lg flex-grow"><li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Desain Interior Mini-Resto</li><li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Peralatan Dapur Profesional</li><li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i> Bahan Baku Awal 500 Porsi</li></ul><a href="https://wa.me/6289663363038?text=Halo,%20saya%20tertarik%20dengan%20Paket%20Komandan%20Kosmik." target="_blank" class="mt-8 w-full text-center bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full transition">Pilih Misi Ini</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Section -->
+    <section id="galeri" class="bg-slate-800 py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white reveal">Galeri <span class="text-orange-400">Misi Kami</span></h2>
+                <p class="text-gray-400 mt-2 reveal">Lihatlah beberapa outlet kami yang telah sukses meluncur di berbagai lokasi.</p>
+            </div>
+            
+            <div class="swiper gallery-slider reveal w-full relative">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <a href="https://images.unsplash.com/photo-1626082896498-4dc128ebc50d?q=80&w=2070&auto=format&fit=crop" data-fancybox="gallery" data-caption="Contoh booth modern">
+                            <img src="both 50jt.jpg" alt="Contoh booth Galaxy Chicken Criuk" class="rounded-lg shadow-lg w-full h-80 object-cover">
+                        </a>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                         <a href="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=2069&auto=format&fit=crop" data-fancybox="gallery" data-caption="Outlet di malam hari">
+                            <img src="both 25juta.jpg" alt="Contoh outlet Galaxy Chicken Criuk di malam hari" class="rounded-lg shadow-lg w-full h-80 object-cover">
+                        </a>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <a href="https://images.unsplash.com/photo-1606787366850-de6330128211?q=80&w=2070&auto=format&fit=crop" data-fancybox="gallery" data-caption="Pelanggan menikmati hidangan">
+                            <img src="25jt va.jpg" alt="Pelanggan menikmati hidangan" class="rounded-lg shadow-lg w-full h-80 object-cover">
+                        </a>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <a href="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=2070&auto=format&fit=crop" data-fancybox="gallery" data-caption="Kru yang ramah dan siap melayani">
+                            <img src="15jt b.jpg" alt="Kru yang sedang melayani" class="rounded-lg shadow-lg w-full h-80 object-cover">
+                        </a>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="swiper-slide">
+                        <a href="https://images.unsplash.com/photo-1569058242252-623df4609e39?q=80&w=2070&auto=format&fit=crop" data-fancybox="gallery" data-caption="Produk ayam goreng yang menggugah selera">
+                            <img src="ayam a.jpg" alt="Detail produk ayam goreng" class="rounded-lg shadow-lg w-full h-80 object-cover">
+                        </a>
+                    </div>
+                </div>
+                <!-- Pagination Bullets -->
+                <div class="swiper-pagination mt-8 relative"></div>
+                <!-- Navigation Buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Peta Section -->
+    <section id="peta" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white reveal">Peta Galaksi <span class="text-orange-400">Outlet Kami</span></h2>
+                <p class="text-gray-400 mt-2 reveal">Temukan outlet Galaxy Chicken Criuk terdekat di konstelasi Anda.</p>
+            </div>
+            <div id="map" class="reveal shadow-2xl shadow-orange-500/10"></div>
+        </div>
+    </section>
+
+    <!-- Testimoni Mitra Section -->
+    <section id="testimoni" class="bg-slate-800 py-20">
+        <div class="container mx-auto px-6 overflow-hidden">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white reveal">Kisah Sukses <span class="text-orange-400">Para Komandan</span></h2>
+                <p class="text-gray-400 mt-2 reveal">Kami tidak hanya membangun bisnis, kami membangun kemitraan yang kuat.</p>
+            </div>
+            <!-- Slider Testimoni -->
+            <div class="swiper testimonialSwiper reveal">
+                <div class="swiper-wrapper pb-16">
+                    <!-- Testimoni Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-slate-900/50 rounded-2xl p-8 md:p-12 grid md:grid-cols-2 gap-12 items-center">
+                            <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=1974&auto=format&fit=crop" alt="Owner bersama mitra Galaxy Chicken Criuk Budi Santoso" class="rounded-lg shadow-md w-full h-full object-cover">
+                            <div class="text-left">
+                                <i class="fas fa-quote-left text-4xl text-orange-400 mb-4"></i>
+                                <p class="text-xl italic text-gray-200">"Bergabung dengan Galaxy Chicken Criuk adalah keputusan terbaik saya. Dukungan dari tim pusat luar biasa, dari awal sampai sekarang omset terus meroket. Konsepnya unik dan sangat disukai pelanggan!"</p>
+                                <p class="text-lg font-bold text-white mt-6">- Budi Santoso</p>
+                                <p class="text-orange-400">Mitra Komandan Kosmik, Jakarta</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Testimoni Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-slate-900/50 rounded-2xl p-8 md:p-12 grid md:grid-cols-2 gap-12 items-center">
+                            <img src="347b278c-6db8-45b5-98b1-740405d9c43c.jpg" alt="Owner bersama mitra Galaxy Chicken Criuk Budi Santoso" class="rounded-lg shadow-md w-full h-full object-cover">
+                            <div class="text-left">
+                                <i class="fas fa-quote-left text-4xl text-orange-400 mb-4"></i>
+                                <p class="text-xl italic text-gray-200">"Bergabung dengan Galaxy Chicken Criuk adalah keputusan terbaik saya. Dukungan dari tim pusat luar biasa, dari awal sampai sekarang omset terus meroket. Konsepnya unik dan sangat disukai pelanggan!"</p>
+                                <p class="text-lg font-bold text-white mt-6">- Anisa Dwi Aprilianti</p>
+                                <p class="text-orange-400">Mitra Komandan Kosmik, Bogor</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimoni Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-slate-900/50 rounded-2xl p-8 md:p-12 grid md:grid-cols-2 gap-12 items-center">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop" alt="Owner bersama mitra Galaxy Chicken Criuk Siti Aminah" class="rounded-lg shadow-md w-full h-full object-cover">
+                            <div class="text-left">
+                                <i class="fas fa-quote-left text-4xl text-orange-400 mb-4"></i>
+                                <p class="text-xl italic text-gray-200">"Awalnya ragu, tapi tim Galaxy Chicken sangat membantu. Pelatihannya detail dan bahan bakunya berkualitas. Balik modalnya cepat, sekarang saya sudah berencana buka cabang kedua."</p>
+                                <p class="text-lg font-bold text-white mt-6">- Siti Aminah</p>
+                                <p class="text-orange-400">Mitra Penjelajah Galaksi, Surabaya</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimoni Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="bg-slate-900/50 rounded-2xl p-8 md:p-12 grid md:grid-cols-2 gap-12 items-center">
+                            <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop" alt="Owner bersama mitra Galaxy Chicken Criuk Eko Prasetyo" class="rounded-lg shadow-md w-full h-full object-cover">
+                            <div class="text-left">
+                                <i class="fas fa-quote-left text-4xl text-orange-400 mb-4"></i>
+                                <p class="text-xl italic text-gray-200">"Sebagai pemula di bisnis kuliner, saya pilih paket booth. Ternyata respon pasarnya luar biasa! Sistemnya mudah dijalankan, dan saya sangat puas dengan hasilnya."</p>
+                                <p class="text-lg font-bold text-white mt-6">- Eko Prasetyo</p>
+                                <p class="text-orange-400">Mitra Stasiun Luar Angkasa, Yogyakarta</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pagination Bullets -->
+                <div class="swiper-pagination-testimonial"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action - Proposal -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Siap Meluncurkan Bisnis Anda?</h2>
+            <p class="text-gray-400 mt-3 mb-8 max-w-2xl mx-auto">Lihat detail lengkap, proyeksi keuntungan, dan semua informasi yang Anda butuhkan dalam proposal komprehensif kami.</p>
+            <a href="proposal.html" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full text-xl transition transform hover:scale-105 inline-block">
+                <i class="fas fa-download mr-2"></i> Lihat Proposal Online
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-10">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <p>&copy; 2025 Galaxy Chicken Criuk. Semua Hak Dilindungi.</p>
+            <p>Sebuah Perjalanan Kuliner Luar Angkasa.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/6289663363038?text=Halo,%20saya%20tertarik%20dengan%20franchise%20Galaxy%20Chicken%20Criuk." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp my-float" style="margin-top: 16px;"></i></a>
+    
+    <!-- JavaScript untuk Swiper.js, Fancybox, dan Leaflet.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+        // Efek animasi saat scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // Inisialisasi Swiper.js untuk Galeri
+        const gallerySwiper = new Swiper('.gallery-slider', {
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        });
+
+        // Inisialisasi Swiper.js untuk Testimoni
+        const testimonialSwiper = new Swiper('.testimonialSwiper', {
+            loop: true,
+            autoplay: { delay: 5000, disableOnInteraction: true },
+            effect: 'fade',
+            fadeEffect: { crossFade: true },
+            pagination: { el: '.swiper-pagination-testimonial', clickable: true },
+        });
+
+        // Inisialisasi Fancybox
+        Fancybox.bind("[data-fancybox='gallery']", {
+            loop: true,
+            buttons: ["zoom", "slideShow", "thumbs", "close"]
+        });
+
+        // PETA INTERAKTIF LEAFLET.JS
+        const map = L.map('map').setView([-2.548926, 118.0148634], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        const outletIcon = L.icon({
+            iconUrl: 'https://placehold.co/40x40/FBBF24/000000?text=G', // Ganti dengan logo Anda
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+            popupAnchor: [0, -40]
+        });
+        const outlets = [
+            { lat: -6.208763, lon: 106.845599, name: "Galaxy Chicken Jakarta", address: "Jl. Jenderal Sudirman Kav. 52-53, Jakarta Selatan" },
+            { lat: -7.257472, lon: 112.752088, name: "Galaxy Chicken Surabaya", address: "Jl. Tunjungan No. 88, Surabaya" },
+            { lat: -6.447544096370465, lon: 106.91155498847365, name: "Galaxy Chicken Bogor", address: "Jl. , Tlajung Udik, Kec. Gn. Putri, Kabupaten Bogor" },
+            { lat: -6.917464, lon: 107.619123, name: "Galaxy Chicken Bandung", address: "Jl. Asia Afrika No. 1, Bandung" },
+            { lat: -7.795580, lon: 110.369490, name: "Galaxy Chicken Yogyakarta", address: "Jl. Malioboro, Yogyakarta" },
+            { lat: 5.553959, lon: 95.317598, name: "Galaxy Chicken Aceh", address: "Jl. T. Nyak Arief, Banda Aceh" },
+        ];
+        outlets.forEach(outlet => {
+            L.marker([outlet.lat, outlet.lon], {icon: outletIcon}).addTo(map).bindPopup(`<b>${outlet.name}</b><br>${outlet.address}`);
+        });
+    </script>
+</body>
+</html>
+
+
