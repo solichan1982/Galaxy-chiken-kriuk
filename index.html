@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxy Chicken Criuk - Astronot Chicken - Franchise Ayam Goreng Luar Angkasa</title>
+    <title>Galaxy Chicken Criuk - Franchise Ayam Goreng Luar Angkasa</title>
     
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,83 +26,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* Custom CSS for custom styles and animations */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0f172a; /* Slate 900 */
-            color: #f8fafc; /* Slate 50 */
-        }
-        .hero-section {
-            background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop');
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-10px);
-        }
-        .reveal {
-            position: relative;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: 1s all ease;
-        }
-        .reveal.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* Styling untuk Tombol Navigasi Swiper Galeri */
-        .gallery-slider .swiper-button-next, .gallery-slider .swiper-button-prev {
-            color: #fb923c; /* Orange-400 */
-            background-color: rgba(15, 23, 42, 0.5);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-        .gallery-slider .swiper-button-next:hover, .gallery-slider .swiper-button-prev:hover {
-            background-color: #fb923c;
-            color: #ffffff;
-        }
-        .gallery-slider .swiper-button-next::after, .gallery-slider .swiper-button-prev::after {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .swiper-pagination-bullet-active {
-            background: #fb923c !important;
-        }
-        /* Styling untuk Peta */
-        #map {
-            height: 500px;
-            border-radius: 1rem;
-            z-index: 10;
-        }
+        /* Custom CSS */
+        body { font-family: 'Poppins', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .hero-section { background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; }
+        .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .glass-card:hover { transform: translateY(-10px); }
+        .reveal { position: relative; transform: translateY(100px); opacity: 0; transition: 1s all ease; }
+        .reveal.active { transform: translateY(0); opacity: 1; }
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 100; transition: all 0.3s ease; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        .gallery-slider .swiper-button-next, .gallery-slider .swiper-button-prev { color: #fb923c; background-color: rgba(15, 23, 42, 0.5); width: 50px; height: 50px; border-radius: 50%; transition: all 0.3s ease; }
+        .gallery-slider .swiper-button-next:hover, .gallery-slider .swiper-button-prev:hover { background-color: #fb923c; color: #ffffff; }
+        .gallery-slider .swiper-button-next::after, .gallery-slider .swiper-button-prev::after { font-size: 20px; font-weight: bold; }
+        .swiper-pagination-bullet-active { background: #fb923c !important; }
+        #map { height: 500px; border-radius: 1rem; z-index: 10; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 1rem; box-shadow: 0 10px 30px rgba(251, 146, 60, 0.2); }
+        .video-container iframe, .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     </style>
 </head>
 <body class="scroll-smooth">
@@ -111,11 +50,12 @@
     <header class="bg-slate-900/50 backdrop-blur-sm fixed w-full z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="flex items-center space-x-3 text-2xl font-bold text-white">
-                <img src="adobe.png" alt="Logo Galaxy Chicken Criuk" class="w-12 h-12">
+                <img src="logo-anda.png" alt="Logo Galaxy Chicken Criuk" class="w-12 h-12">
                 <span class="text-white">Galaxy <span class="text-orange-400">Chicken</span></span>
             </a>
             <div class="hidden md:flex space-x-8 text-lg">
                 <a href="#home" class="text-gray-300 hover:text-orange-400 transition">Home</a>
+                <a href="#video-promo" class="text-gray-300 hover:text-orange-400 transition">Video</a>
                 <a href="#paket" class="text-gray-300 hover:text-orange-400 transition">Paket</a>
                 <a href="#galeri" class="text-gray-300 hover:text-orange-400 transition">Galeri</a>
                 <a href="#peta" class="text-gray-300 hover:text-orange-400 transition">Lokasi</a>
@@ -125,7 +65,7 @@
         </nav>
     </header>
 
-    <!-- ... (Bagian Hero, About, Paket tetap sama) ... -->
+    <!-- Hero Section -->
     <section id="home" class="hero-section h-screen flex items-center justify-center text-center">
         <div class="bg-black bg-opacity-60 p-10 rounded-lg">
             <h1 class="text-5xl md:text-7xl font-black text-white uppercase reveal">Rasa <span class="text-orange-400">Renyah</span> dari Luar Angkasa</h1>
@@ -133,6 +73,8 @@
             <div class="mt-8 reveal"><a href="#paket" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition transform hover:scale-105">Lihat Paket Kemitraan</a></div>
         </div>
     </section>
+    
+    <!-- About Section -->
     <section id="about" class="py-20 bg-slate-800">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16"><h2 class="text-4xl font-bold text-white reveal">Kenapa <span class="text-orange-400">Galaxy Chicken Criuk</span>?</h2><p class="text-gray-400 mt-2 reveal">Kami bukan sekedar ayam goreng biasa. Kami adalah sebuah pengalaman.</p></div>
@@ -146,7 +88,25 @@
             </div>
         </div>
     </section>
-    <section id="paket" class="py-20">
+
+    <!-- Video Promosi Section -->
+    <section id="video-promo" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white reveal">Jelajahi Dunia <span class="text-orange-400">Galaxy Chicken</span></h2>
+                <p class="text-gray-400 mt-2 reveal">Lihat keseruan dan kelezatan kami dalam video singkat ini!</p>
+            </div>
+            <div id="video-wrapper" class="hidden"> <!-- Wrapper yang akan dikontrol oleh JS -->
+                <div class="video-container reveal">
+                    <iframe id="youtube-player" class="hidden" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <video id="local-player" class="hidden" controls preload="metadata">Maaf, browser Anda tidak mendukung pemutar video.</video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paket Kemitraan Section -->
+    <section id="paket" class="py-20 bg-slate-800">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16"><h2 class="text-4xl font-bold text-white uppercase reveal">Pilih Misi <span class="text-orange-400">Anda</span></h2><p class="text-gray-400 mt-2 reveal">Tiga paket kemitraan dirancang untuk setiap level investor, dari pemula hingga komandan.</p></div>
             <div class="grid md:grid-cols-3 gap-8">
@@ -157,7 +117,7 @@
         </div>
     </section>
 
-    <!-- Galeri Section -->
+    i Section -->
     <section id="galeri" class="bg-slate-800 py-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
@@ -196,7 +156,20 @@
                         <a href="https://images.unsplash.com/photo-1569058242252-623df4609e39?q=80&w=2070&auto=format&fit=crop" data-fancybox="gallery" data-caption="Produk ayam goreng yang menggugah selera">
                             <img src="ayam a.jpg" alt="Detail produk ayam goreng" class="rounded-lg shadow-lg w-full h-80 object-cover">
                         </a>
+                     </div>
+                    <!-- Slide 5 -->
+                    <div class="swiper-slide">
+                        <a href="https://images.unsplash.com/photo-1569058242252-623df4609e39?q=80&w=2070&auto=format&fit=crop" data-fancybox="gallery" data-caption="Produk ayam goreng yang menggugah selera">
+                            <img src="ayam3.jpg" alt="Detail produk ayam goreng" class="rounded-lg shadow-lg w-full h-80 object-cover">
+                        </a>
+                     </div>
+                    <!-- Slide 5 -->
+                    <div class="swiper-slide">
+                        <a href="https://images.unsplash.com/photo-1569058242252-623df4609e39?q=80&w=2070&auto=format&fit=crop" data-fancybox="gallery" data-caption="Produk ayam goreng yang menggugah selera">
+                            <img src="ayam2.jpg" alt="Detail produk ayam goreng" class="rounded-lg shadow-lg w-full h-80 object-cover">
+                        </a>      
                     </div>
+
                 </div>
                 <!-- Pagination Bullets -->
                 <div class="swiper-pagination mt-8 relative"></div>
@@ -208,17 +181,14 @@
     </section>
 
     <!-- Peta Section -->
-    <section id="peta" class="py-20">
+    <section id="peta" class="bg-slate-800 py-20">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-white reveal">Peta Galaksi <span class="text-orange-400">Outlet Kami</span></h2>
-                <p class="text-gray-400 mt-2 reveal">Temukan outlet Galaxy Chicken Criuk terdekat di konstelasi Anda.</p>
-            </div>
+            <div class="text-center mb-16"><h2 class="text-4xl font-bold text-white reveal">Peta Galaksi <span class="text-orange-400">Outlet Kami</span></h2><p class="text-gray-400 mt-2 reveal">Temukan outlet Galaxy Chicken Criuk terdekat di konstelasi Anda.</p></div>
             <div id="map" class="reveal shadow-2xl shadow-orange-500/10"></div>
         </div>
     </section>
 
-    <!-- Testimoni Mitra Section -->
+    ni Mitra Section -->
     <section id="testimoni" class="bg-slate-800 py-20">
         <div class="container mx-auto px-6 overflow-hidden">
             <div class="text-center mb-16">
@@ -280,17 +250,13 @@
                 <!-- Pagination Bullets -->
                 <div class="swiper-pagination-testimonial"></div>
             </div>
-        </div>
-    </section>
 
     <!-- Call to Action - Proposal -->
-    <section class="py-20">
+    <section class="bg-slate-800 py-20">
         <div class="container mx-auto px-6 text-center reveal">
             <h2 class="text-3xl md:text-4xl font-bold text-white">Siap Meluncurkan Bisnis Anda?</h2>
             <p class="text-gray-400 mt-3 mb-8 max-w-2xl mx-auto">Lihat detail lengkap, proyeksi keuntungan, dan semua informasi yang Anda butuhkan dalam proposal komprehensif kami.</p>
-            <a href="proposal.html" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full text-xl transition transform hover:scale-105 inline-block">
-                <i class="fas fa-download mr-2"></i> Lihat Proposal Online
-            </a>
+            <a href="proposal.html" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full text-xl transition transform hover:scale-105 inline-block"><i class="fas fa-download mr-2"></i> Lihat Proposal Online</a>
         </div>
     </section>
     
@@ -302,15 +268,14 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/6289663363038?text=Halo,%20saya%20tertarik%20dengan%20franchise%20Galaxy%20Chicken%20Criuk." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp my-float" style="margin-top: 16px;"></i></a>
+    <a href="https://wa.me/6381382256196?text=Halo,%20saya%20tertarik%20dengan%20franchise%20Galaxy%20Chicken%20Criuk." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp my-float" style="margin-top: 16px;"></i></a>
     
-    <!-- JavaScript untuk Swiper.js, Fancybox, dan Leaflet.js -->
+    <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <script>
-        // Efek animasi saat scroll
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -319,49 +284,49 @@
                 var elementVisible = 150;
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
-                } else {
-                    reveals[i].classList.remove("active");
                 }
             }
         }
         window.addEventListener("scroll", reveal);
         reveal();
 
-        // Inisialisasi Swiper.js untuk Galeri
         const gallerySwiper = new Swiper('.gallery-slider', {
-            loop: true,
-            autoplay: { delay: 3000, disableOnInteraction: false },
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            loop: true, autoplay: { delay: 3000, disableOnInteraction: false }, effect: 'coverflow', grabCursor: true, centeredSlides: true, slidesPerView: 'auto',
+            coverflowEffect: { rotate: 50, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
+            pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         });
 
-        // Inisialisasi Swiper.js untuk Testimoni
         const testimonialSwiper = new Swiper('.testimonialSwiper', {
-            loop: true,
-            autoplay: { delay: 5000, disableOnInteraction: true },
-            effect: 'fade',
-            fadeEffect: { crossFade: true },
-            pagination: { el: '.swiper-pagination-testimonial', clickable: true },
+            loop: true, autoplay: { delay: 5000, disableOnInteraction: true }, effect: 'fade',
+            fadeEffect: { crossFade: true }, pagination: { el: '.swiper-pagination-testimonial', clickable: true },
         });
 
-        // Inisialisasi Fancybox
-        Fancybox.bind("[data-fancybox='gallery']", {
-            loop: true,
-            buttons: ["zoom", "slideShow", "thumbs", "close"]
-        });
+        Fancybox.bind("[data-fancybox='gallery']", { loop: true, buttons: ["zoom", "slideShow", "thumbs", "close"] });
+        
+        // --- LOGIKA PEMUTAR VIDEO ---
+        const videoSource = 'https://youtu.be/LbEqq2UGCk8?si=s5yk7RZ8rS5VFtBl'; // <-- Ganti link video di sini
+        const videoWrapper = document.getElementById('video-wrapper');
+        const youtubePlayer = document.getElementById('youtube-player');
+        const localPlayer = document.getElementById('local-player');
 
-        // PETA INTERAKTIF LEAFLET.JS
+        if (videoSource) {
+            videoWrapper.classList.remove('hidden'); // Tampilkan wrapper video
+            let videoId = '';
+            if (videoSource.includes('youtu.be/')) {
+                videoId = videoSource.split('youtu.be/')[1].split('?')[0];
+            } else if (videoSource.includes('watch?v=')) {
+                videoId = videoSource.split('watch?v=')[1].split('&')[0];
+            }
+            if (videoId) {
+                youtubePlayer.src = 'https://www.youtube.com/embed/' + videoId;
+                youtubePlayer.classList.remove('hidden');
+            } else if (videoSource.endsWith('.mp4')) {
+                localPlayer.src = videoSource;
+                localPlayer.classList.remove('hidden');
+            }
+        }
+
+       // PETA INTERAKTIF LEAFLET.JS
         const map = L.map('map').setView([-2.548926, 118.0148634], 5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -386,5 +351,4 @@
     </script>
 </body>
 </html>
-
 
